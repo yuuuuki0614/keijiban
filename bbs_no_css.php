@@ -23,8 +23,8 @@
 
 	//POST送信された時だけINSERT文を実行するためのif文が必要
 	 if (!empty($_POST)) {
-		  $nickname = htmlspecialchars($_POST['nickname']);
-		  $comment = htmlspecialchars($_POST['comment']);
+		  $nickname = ($_POST['nickname']);
+		  $comment = ($_POST['comment']);
 
 		  // ２．SQL文を実行する
 		  $sql = 'INSERT INTO `posts`(`nickname`, `comment`,`created`) VALUES ("'. $nickname.'", "'.$comment.'",now());'; //←ここ以外テンプレートで用意しとくと楽！。
