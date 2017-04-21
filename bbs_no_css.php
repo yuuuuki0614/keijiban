@@ -14,6 +14,13 @@
 	  $dbh = new PDO($dsn, $user, $password);
 	  $dbh->query('SET NAMES utf8');
 
+
+	//配列で取得したデータを格納
+	//配列を初期化
+	//ifの手前に持ってくると、ifの条件に左右されずに上手くいく。
+	$posts_datas = array();
+
+
 	//POST送信された時だけINSERT文を実行するためのif文が必要
 	 if (!empty($_POST)) {
 		  $nickname = htmlspecialchars($_POST['nickname']);
@@ -29,7 +36,8 @@
 
 		  //SELECT文の実行もhrmlの上のここでやる！
 		  //SQL文作成（SELECT文）データをもらう
-		  $sql = 'SELECT * FROM `posts`;';
+		  $sql = 'SELECT * FROM `posts` ORDER BY id DESC;';
+		  
 
 		  //実行
 		  $stmt = $dbh->prepare($sql); 
@@ -38,9 +46,7 @@
 				//↓
 		  		//↓
 		  		//↓
-		  //配列で取得したデータを格納
-		  //配列を初期化
-		  $posts_datas = array();
+		  
 
 		  //繰り返し文でデータの取得（フェッチ）
 		  while (1) {
@@ -54,6 +60,9 @@
 		      $posts_datas[] = $rec;
 		      //recには一人分の呟きしか入っていないので、posts_datasで皆の呟きを入れる。そこから取ってくるので[]を付ける。？？
 	      }
+
+	      var_dump($sql);
+
 	 }
 
 
