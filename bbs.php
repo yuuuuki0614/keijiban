@@ -140,16 +140,23 @@
       <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
           <article class="timeline-entry">
+              <?php if (!empty($_POST)) {
+                foreach ($posts_datas as $post_each) {?>
               <div class="timeline-entry-inner">
                   <div class="timeline-icon bg-success">
                       <i class="entypo-feather"></i>
                       <i class="fa fa-cogs"></i>
                   </div>
                   <div class="timeline-label">
-                      <h2><a href="#">seedくん</a> <span>2016-01-20</span></h2>
-                      <p>つぶやいたコメント</p>
+                      <h2>
+                        <a href="#"><?php echo $post_each['nickname'].'<br>';?></a> 
+                        <span><?php echo $post_each['comment'].'<br>';?></span>
+                      </h2>
+                      <p><?php echo $post_each['created'].'<br>';?></p>
+                      <?php echo '<hr>'; ?>
                   </div>
               </div>
+              <?php }} ?>
           </article>
 
           <article class="timeline-entry begin">
@@ -157,6 +164,9 @@
                   <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
                       <i class="entypo-flight"></i> +
                   </div>
+                   <?php foreach( $posts_datas as $data ):?>
+         <p><span><?php echo $data["nickname"]; ?></span>:<span><?php echo $data["comment"]; ?></span></p>
+        <?php endforeach;?>
               </div>
           </article>
         </div>
