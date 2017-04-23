@@ -75,7 +75,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>セブ掲示版</title>
+  <title>セブ掲示版（工事中）これ？</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -96,7 +96,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#page-top"><span class="strong-title"><i class="fa fa-linux"></i> Oneline bbs</span></a>
+              <a class="navbar-brand" href="#page-top"><span class="strong-title"><i class="fa fa-comments-o"></i> bbsつくったー</span></a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -116,24 +116,25 @@
       <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
         <!-- form部分 -->
-        <form action="bbs.php" method="post">
+        <form action="bbs2.php" method="post">
           <!-- nickname -->
           <div class="form-group">
             <div class="input-group">
-              <input type="text" name="nickname" class="form-control" id="validate-text" placeholder="nickname" required>
+              <input type="text" name="nickname" class="form-control" id="validate-text" placeholder="うちの(nickname)" required>
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
           <!-- comment -->
           <div class="form-group">
             <div class="input-group" data-validate="length" data-length="4">
-              <textarea type="text" class="form-control" name="comment" id="validate-length" placeholder="comment" required></textarea>
+              <textarea type="text" class="form-control" name="comment" id="validate-length" placeholder="思てること(comment)" required></textarea>
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
           <!-- つぶやくボタン -->
-          <button type="submit" class="btn btn-primary col-xs-12" disabled>つぶやく</button>
+          <button type="submit" class="btn btn-primary col-xs-12" disabled>言うてみる-</button>
         </form>
+        <img src="Osaka_castle_from_bottom.jpg" class="Osaka_castle">
       </div>
 
       <!-- 画面右側 -->
@@ -143,11 +144,34 @@
               <div class="timeline-entry-inner">
                   <div class="timeline-icon bg-success">
                       <i class="entypo-feather"></i>
-                      <i class="fa fa-cogs"></i>
+                      <i class="fa fa-smile-o"></i>
                   </div>
                   <div class="timeline-label">
-                      <h2><a href="#">seedくん</a> <span>2016-01-20</span></h2>
-                      <p>つぶやいたコメント</p>
+                      <h2><a href="#">どっかの誰かが</a> 
+                        <span id="view_todayE"></span>
+
+                                  <script type="text/javascript">
+                                  document.getElementById("view_todayE").innerHTML = getTodayE();
+
+                                  function getTodayE() {
+                                    var now = new Date();
+                                    var year = now.getFullYear();
+                                    var mon = now.getMonth(); //１足さない
+                                    var day = now.getDate();
+                                    var you = now.getDay(); //曜日(0～6=日～土)
+
+                                    //曜日の選択肢
+                                    var youbi = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+                                    //月名の選択肢
+                                    var month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+                                    //出力用
+                                    var s = month[mon] + " " + day + ", " + year + " (" +youbi[you] + ")";
+                                    return s;
+                                  }
+                                  </script>
+                      </h2>
+                      <p>言うてみた-</p>
                   </div>
               </div>
           </article>
@@ -161,7 +185,6 @@
           </article>
         </div>
       </div>
-
     </div>
   </div>
 

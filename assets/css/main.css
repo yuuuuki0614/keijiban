@@ -1,5 +1,6 @@
 body {
   margin-top: 20px;
+  /*background-image:url(https://Osaka_buildings.png);*/
 }
 
 .content-margin-top {
@@ -9,4 +10,9 @@ body {
 .strong-title {
   font-size: 30px;
   font-weight: 800;
+}
+
+.Osaka_castle{
+	display: inline-block;
+	position: relative;
 }

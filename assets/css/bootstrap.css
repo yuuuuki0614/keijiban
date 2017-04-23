@@ -1086,7 +1086,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  /*background-color: #fff;*/
+  /*background-image:url(Osaka_buildings.png);*/
 }
 input,
 button,
@@ -3001,7 +3002,7 @@ select[multiple].input-lg {
 .btn {
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-bottom: 15px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;
@@ -3123,8 +3124,8 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #ee82ee;
+  border-color: #ee82ee;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3134,16 +3135,24 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  background-color: #da70d6;
+  /*border-color: #204d74;*/
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  /*background-color: #286090;*/
+  /*border-color: #204d74;*/
+  position:relative;
+  top:5px;
+  left:5px;
 }
+
+.btn-primary:active{
+
+}
+
 .btn-primary:active:hover,
 .btn-primary.active:hover,
 .open > .dropdown-toggle.btn-primary:hover,
@@ -3154,8 +3163,8 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #fff;
-  background-color: #204d74;
-  border-color: #122b40;
+  /*background-color: #204d74;*/
+  /*border-color: #122b40;*/
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3180,8 +3189,8 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #dda0dd;
+  border-color: #dda0dd;
 }
 .btn-primary .badge {
   color: #337ab7;
@@ -4336,7 +4345,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
+    /*margin-left: -15px;*/
   }
 }
 .navbar-toggle {
@@ -4541,7 +4550,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #fff799;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
