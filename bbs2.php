@@ -4,9 +4,18 @@
   //insert文でデータを保存するところまで宿題。
 
 
-    $dsn = 'mysql:dbname=oneline_bbs;host=localhost';
-    $user = 'root'; 
-    $password=''; 
+    // 自分のXAMPPでやるver.
+    // $dsn = 'mysql:dbname=oneline_bbs;host=localhost';
+    // $user = 'root'; 
+    // $password=''; 
+
+
+    //10日間だけのロリポップver.
+    $dsn = 'mysql:dbname=LAA0854008-onelinebbs;host=mysql103.phy.lolipop.lan';
+    $user = 'LAA0854008';
+    $password = 'lp06rMKYrAEm';
+
+
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
@@ -27,12 +36,12 @@
       //INSERT文を実行
       $stmt = $dbh->prepare($sql); 
       $stmt->execute();
-
+    }
 
 
       //SELECT文の実行もhrmlの上のここでやる！
       //SQL文作成（SELECT文）データをもらう
-      $sql = 'SELECT * FROM `posts` ORDER BY id DESC;';
+      $sql = 'SELECT * FROM `posts` ORDER BY `created` DESC;';
       
 
       //実行
@@ -58,8 +67,6 @@
         }
 
         var_dump($sql);
-
-   }
 
 
   // ３．データベースを切断する
@@ -138,55 +145,48 @@
       </div>
 
       <!-- 画面右側 -->
-      <div class="col-md-8 content-margin-top">
+       <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
-          <article class="timeline-entry">
+
+          <?php if (!empty($_POST)) {
+                foreach ($posts_datas as $post_each) {?>
+
+          <article class="timeline-entry">        
               <div class="timeline-entry-inner">
                   <div class="timeline-icon bg-success">
                       <i class="entypo-feather"></i>
                       <i class="fa fa-smile-o"></i>
                   </div>
                   <div class="timeline-label">
-                      <h2><a href="#">どっかの誰かが</a> 
-                        <span id="view_todayE"></span>
-
-                                  <script type="text/javascript">
-                                  document.getElementById("view_todayE").innerHTML = getTodayE();
-
-                                  function getTodayE() {
-                                    var now = new Date();
-                                    var year = now.getFullYear();
-                                    var mon = now.getMonth(); //１足さない
-                                    var day = now.getDate();
-                                    var you = now.getDay(); //曜日(0～6=日～土)
-
-                                    //曜日の選択肢
-                                    var youbi = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
-                                    //月名の選択肢
-                                    var month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
-
-                                    //出力用
-                                    var s = month[mon] + " " + day + ", " + year + " (" +youbi[you] + ")";
-                                    return s;
-                                  }
-                                  </script>
+                      <h2>
+                        <a href="#"><?php echo $post_each['nickname'].'<br>';?></a> 
+                        <span><?php echo $post_each['comment'].'<br>';?></span>
                       </h2>
-                      <p>言うてみた-</p>
+                      <p><?php echo $post_each['created'].'<br>';?></p>
+                      <?php echo '<br>'; ?>
                   </div>
               </div>
           </article>
+
+          <?php }} ?>
 
           <article class="timeline-entry begin">
               <div class="timeline-entry-inner">
                   <div class="timeline-icon" style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);">
                       <i class="entypo-flight"></i> +
                   </div>
+                   <!-- <?php foreach( $posts_datas as $data ):?>
+         <p><span><?php echo $data["nickname"]; ?></span>:<span><?php echo $data["comment"]; ?></span></p>
+        <?php endforeach;?> -->
               </div>
           </article>
         </div>
       </div>
+
     </div>
   </div>
+
+
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
